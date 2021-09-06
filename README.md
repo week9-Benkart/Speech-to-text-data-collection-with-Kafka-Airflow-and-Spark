@@ -8,7 +8,7 @@ This project is to produce a tool that can be deployed to process posting and re
 [![MIT License][license-shield]][license-url]
 
 ![workflow](https://github.com/week9-Benkart/Speech-to-text-data-collection-with-Kafka-Airflow-and-Spark/blob/main/.github/workflows/blank.yml/badge.svg)
-<!-- PROJECT LOGO -->
+
 <br />
 <p align="center">
   <a href="https://github.com/week9-Benkart/Speech-to-text-data-collection-with-Kafka-Airflow-and-Spark">
@@ -62,9 +62,6 @@ This project is to produce a tool that can be deployed to process posting and re
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-![unnamed](https://ars.els-cdn.com/content/image/1-s2.0-S2095809919305235-ga1.jpg)
-
 
 The purpose of this week’s challenge is to build a data engineering pipeline that allows recording millions of Amharic and Swahili speakers reading digital texts in app and web platforms. There are a number of large text corpuses we will use, but for the purpose of testing the backend development, you can use the recently released Amharic news text classification dataset with baseline performance dataset:   
 
