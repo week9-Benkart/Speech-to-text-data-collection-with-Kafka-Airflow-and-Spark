@@ -1,6 +1,3 @@
-# Speech-to-text-data-collection-with-Kafka-Airflow-and-Spark
-This project is to produce a tool that can be deployed to process posting and receiving text and audio files from and into a data lake, apply transformation in a distributed manner, and load it into a warehouse in a suitable format to train a speech-t0-text model.
-
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -18,6 +15,7 @@ This project is to produce a tool that can be deployed to process posting and re
   <h3 align="center">Speech-to-text data collection with Kafka, Airflow, and Spark</h3>
 
   <p align="center">
+Speech-to-text-data-collection-with-Kafka-Airflow-and-Spark
 This project is to produce a tool that can be deployed to process posting and receiving text and audio files from and into a data lake, apply transformation in a distributed manner, and load it into a warehouse in a suitable format to train a speech-t0-text model.
     <br />
     <a href="https://medium.com/analytics-vidhya/end-to-end-speech-recognition-model-for-amharic-using-tensorflow-e72e60775bd9"><strong>Explore more </strong></a>
