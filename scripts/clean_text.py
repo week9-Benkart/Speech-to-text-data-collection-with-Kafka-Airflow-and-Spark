@@ -3,7 +3,7 @@ import sys
 import nltk
 import numpy as np
 import pandas as pd
-from log import get_logger
+from app_logger import App_Logger
 from nltk.tokenize import word_tokenize
 from nltk.tokenize import WordPunctTokenizer
 
@@ -13,7 +13,7 @@ class clean_text():
     """
 
     def __init__(self):
-        self.logger = get_logger("clean_text")
+        self.logger = App_Logger().get_logger(__name__)
 
     def loading(self, text_path):
         df = pd.read_csv(text_path, sep="\t", header=None)

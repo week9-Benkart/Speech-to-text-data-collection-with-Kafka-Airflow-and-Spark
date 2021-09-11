@@ -1,5 +1,6 @@
 from kafka import KafkaConsumer
 import json
+from app_logger import App_Logger
 
 
 class Consumer:
@@ -9,6 +10,7 @@ class Consumer:
         """ Initialize consumer with the given bootstrapserver"""
         self.bootstrap = bootstrap
         self.topic = topic
+        self.logger = App_Logger().get_logger(__name__)
 
     def start_consuming(self):
         """ Start Consumer"""

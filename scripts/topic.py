@@ -1,11 +1,13 @@
 from kafka.admin import KafkaAdminClient, NewTopic
+from app_logger import App_Logger
 
 
 class Topics():
     def __init__(self, group_name: str, topics: list) -> None:
-        '''Instatiate a class to create topic on aws. group_name is string, topics is a list of topics to be created'''
+        '''Instantiate a class to create topic on aws. group_name is string, topics is a list of topics to be created'''
         self.group_name = group_name
         self.topics = [group_name + '_' + topic for topic in topics]
+        self.logger = App_Logger().get_logger(__name__)
 
     # modified from code received from https://github.com/Blvisse
     def create_topic(self, topic_name):
@@ -19,8 +21,8 @@ class Topics():
             admin_client.create_topics(
                 new_topics=topic_list, validate_only=False)
 
-        except:
-            pass
+        except Exception:
+            self.logger.exception('Error creating topic.')
 
     def create_topics(self) -> dict:
         '''Iterate thorough topics to be created and create them one after the other. Then return a dictionary of created topics and all topics'''

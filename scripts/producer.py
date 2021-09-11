@@ -1,3 +1,4 @@
+from app_logger import App_Logger
 import json
 from kafka import KafkaProducer
 from kafka.errors import KafkaError
@@ -15,6 +16,7 @@ class Producer:
         self.bootstrap = bootstrap
         self.topic = topic
         self.create_topic = create_topic
+        self.logger = App_Logger().get_logger(__name__)
 
     def start_publishing(self):
         """ Start producer by initializing producer"""
@@ -46,9 +48,9 @@ class Producer:
         print(metadata.partition)
         print(metadata.offset)
 
-    def on_send_error(exc):
+    def on_send_error(self, exc):
         """ Message printed on producer send error"""
-        log.error('error on', exc_info=exc)
+        self.logger.error(f'error on {exc}.')
 
     def publish(self):
         """ Publish Events"""
