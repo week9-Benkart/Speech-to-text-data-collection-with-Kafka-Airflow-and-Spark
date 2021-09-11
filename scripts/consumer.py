@@ -1,25 +1,29 @@
-import time
-import threading
-import datetime
 from kafka import KafkaConsumer
-consumer = KafkaConsumer('first_topic',
-                         bootstrap_servers=['localhost:9092'],
-                         auto_offset_reset='earliest',
-                         enable_auto_commit=True,
-                         auto_commit_interval_ms=1000,
-                         consumer_timeout_ms=-1)
+import json
 
+class Consumer:
+    """ Class for Consumer"""
+    def __init__(self,bootstrap='b-1.demo-cluster-1.9q7lp7.c1.kafka.eu-west-1.amazonaws.com:9092',topic='transc_data'):
+        """ Initialize consumer with the given bootstrapserver"""
+        self.bootstrap = bootstrap
+        self.topic = topic
 
-def fetch_last_min_requests(next_call_in, is_first_execution=False):
-    next_call_in += 60
-    counter_requests = 0
-    batch = consumer.poll(timeout_ms=100)
-    if len(batch) > 0:
-        for message in list(batch.values())[0]:
-            counter_requests += 1
+    def start_consuming(self):
+        """ Start Consumer"""
+        self.initialize()
+        self.print_msg()
 
+    def initialize(self):
+        """ Initialize Consumer"""
+        self.consumer = KafkaConsumer(self.topic,
+                         group_id='my-group',
+                         # value_deserializer=lambda m: json.loads(m.decode('UTF-8')),
+                         bootstrap_servers=self.bootstrap)
 
-next_call_in += 60
-threading.Timer(time.time(),
-                fetch_last_minute_requests,
-                [next_call_in]).start()
+    def print_msg(self):
+        """ Print messages from consumer"""
+        for msg in self.consumer:
+            print(msg.value)
+
+if __name__ == "__main__":
+    Consumer().start_consuming()
