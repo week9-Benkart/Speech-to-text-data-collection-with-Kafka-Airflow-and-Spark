@@ -12,15 +12,6 @@ class Helper:
         self.logger = App_Logger("helper.log").get_app_logger()
 
 
-    def read_csv(self, csv_path, missing_values=[]):
-        try:
-            df = pd.read_csv(csv_path, na_values=missing_values)
-            print("file read as csv")
-            self.logger.info(f"file read as csv from {csv_path}")
-            return df
-        except FileNotFoundError:
-            print("file not found")
-            self.logger.error(f"file not found, path:{csv_path}")
 
     def save_csv(self, df, csv_path):
         try:
