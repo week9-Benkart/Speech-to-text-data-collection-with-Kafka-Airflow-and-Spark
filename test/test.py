@@ -5,15 +5,11 @@ import pandas as pd
 import logging, logging.handlers
 
 sys.path.append(os.path.abspath(os.path.join('../script')))
-from df_helper import DfHelper
 
 
 class TestDf(unittest.TestCase):
     ''' testing  functons in the helper class
     '''
-
-    def setUp(self):
-        self.helper = DfHelper()
 
     def test_to_csv(self):
         df = pd.DataFrame({'col1': range(1,4), 'col2': range(3,6)})
