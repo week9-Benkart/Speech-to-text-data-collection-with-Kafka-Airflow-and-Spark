@@ -15,15 +15,20 @@ class clean_text():
     def __init__(self):
         self.logger = App_Logger().get_logger(__name__)
 
-    def loading(self, text_path):
-        df = pd.read_csv(text_path, sep="\t", header=None)
-        df = df.drop([0], axis=1)
-        df.columns = ['text']
+    def get_text(self, filters):
+        DIRECTORY = '../data/preprocessed'
+        amharic = []
+        sub_dir = [DIRECTORY + '/' + i for i in os.listdir(DIRECTORY)]
+        for d in sub_dir:
+            with open(d) as fp:
+                line = fp.readline()
+                while line:
+                    sent = ''.join( c for c in line if  c not in filters)
+                    amharic.append( sent.rstrip().strip())
+                    line = fp.readline()
 
-        # clean data
-        words_list = [' UNK ', ' music ', ' laughter ']
-        df = df[~df['text'].isin(words_list)]
-        for row in df['text']:
-            for punctuation in string.punctuation:
-                row = row.replace(punctuation, " ")
-        return df
+        return amharic
+
+        filters = '!"#$%&()*+,-/:;<=>?@[\\]^_`{|}~\t\n።”፤፦’፥፣.“‘·\'—\t\n'
+        amharic = get_text(filters)
+        print("num amharic sentences: ", len(amharic))
