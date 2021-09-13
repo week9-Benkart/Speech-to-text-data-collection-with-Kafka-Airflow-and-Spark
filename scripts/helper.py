@@ -7,6 +7,8 @@ app_logger = App_Logger("helper.log").get_app_logger()
 
 
 class Helper:
+    ''' read and save csv files
+    '''
 
     def __init__(self):
         self.logger = App_Logger("helper.log").get_app_logger()
