@@ -8,7 +8,7 @@ import boto3
 from botocore.exceptions import ClientError
 import glob
 from scipy.io.wavfile import read
-from log import get_logger
+from app_logger import App_Logger
 
 class wav_to_ndarray_to_s3():
     """converting wav file to ndarray and saving in s3, ...
@@ -23,26 +23,26 @@ class wav_to_ndarray_to_s3():
         :param dataset_path: Files to be loaded
         :return: list of the paths
         """
-            print("Loading the audio files")
-            labels=[]
-            # dictionary to store files
+        print("Loading the audio files")
+        labels=[]
+        # dictionary to store files
 
-            # loop through all sub-folders
-            for i, (dirpath, dirnames, filenames) in enumerate(os.walk(dataset_path)):
+        # loop through all sub-folders
+        for i, (dirpath, dirnames, filenames) in enumerate(os.walk(dataset_path)):
 
-                # ensure we're processing at sub-folder level
-                if dirpath is not dataset_path:
+            # ensure we're processing at sub-folder level
+            if dirpath is not dataset_path:
 
-                    # save label (i.e., sub-folder name) in the mapping 
-                    label = dirpath#.split("/")[-1]
+                # save label (i.e., sub-folder name) in the mapping 
+                label = dirpath#.split("/")[-1]
 
-                    # process all audio files in the sub-directory
-                    for f in filenames:
+                # process all audio files in the sub-directory
+                for f in filenames:
 
-                        # load audio file
-                        filename=label+"/"+f
-                        labels.append(filename)
-            return labels
+                    # load audio file
+                    filename=label+"/"+f
+                    labels.append(filename)
+        return labels
 
 
     def convert_to_ndarray(DATASET_PATH):
@@ -51,7 +51,7 @@ class wav_to_ndarray_to_s3():
         :return: list containg tuples of ndarrays
         """
         wavs = []
-        for filename in glob.glob(DATASET_PATH + "*.wav"):
+        for filename in glob.glob(DATASET_PATH + "wav/*.wav"):
             wavs.append(read(filename))
         return wavs
 
