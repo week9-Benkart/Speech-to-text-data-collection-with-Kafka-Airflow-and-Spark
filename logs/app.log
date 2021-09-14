@@ -1,0 +1,12 @@
+14-09-2021 12:25:13 - [ERROR] -  topic - (topic.py).create_topic(line 25) - Error creating topic.
+Traceback (most recent call last):
+  File "/mnt/10ac-batch-4/all-notebooks/abreham_abegaze/10acadamy/week9/Speech-to-text-data-collection-with-Kafka-Airflow-and-Spark/scripts/topic.py", line 22, in create_topic
+    new_topics=topic_list, validate_only=False)
+  File "/home/abreham_abegaze/.local/lib/python3.7/site-packages/kafka/admin/client.py", line 461, in create_topics
+    return self._send_request_to_controller(request)
+  File "/home/abreham_abegaze/.local/lib/python3.7/site-packages/kafka/admin/client.py", line 409, in _send_request_to_controller
+    .format(request, response))
+kafka.errors.TopicAlreadyExistsError: [Error 36] TopicAlreadyExistsError: Request 'CreateTopicsRequest_v3(create_topic_requests=[(topic='Benkart_transc_data', num_partitions=1, replication_factor=2, replica_assignment=[], configs=[])], timeout=30000, validate_only=False)' failed with response 'CreateTopicsResponse_v3(throttle_time_ms=0, topic_errors=[(topic='Benkart_transc_data', error_code=36, error_message="Topic 'Benkart_transc_data' already exists.")])'.
+14-09-2021 12:26:23 - [ERROR] -  __main__ - (producer.py).on_send_error(line 53) - error on IllegalStateError: Producer is closed forcefully..
+14-09-2021 12:26:23 - [ERROR] -  __main__ - (producer.py).on_send_error(line 53) - error on IllegalStateError: Producer is closed forcefully..
+14-09-2021 12:26:23 - [ERROR] -  __main__ - (producer.py).on_send_error(line 53) - error on IllegalStateError: Producer is closed forcefully..

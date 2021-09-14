@@ -1,9 +1,11 @@
 import numpy as np
 import pandas as pd
-from app_logger import App_Logger
+import logging as log
+from trac.log import logger_factory
+from log import get_logger
 
 
-app_logger = App_Logger("helper.log").get_app_logger()
+#app_logger = App_Logger("helper.log").get_app_logger()
 
 
 class Helper:
@@ -11,9 +13,8 @@ class Helper:
     '''
 
     def __init__(self):
-        self.logger = App_Logger("helper.log").get_app_logger()
-
-
+        self.logger = get_logger("helper.log")
+        #self.logger = App_Logger("helper.log").get_app_logger()
     def read_csv(self, csv_path, missing_values=[]):
         try:
             df = pd.read_csv(csv_path, na_values=missing_values)
