@@ -1,11 +1,7 @@
 import os
-import sys
-import nltk
 import numpy as np
 import pandas as pd
 from app_logger import App_Logger
-from nltk.tokenize import word_tokenize
-from nltk.tokenize import WordPunctTokenizer
 
 
 class clean_text():
