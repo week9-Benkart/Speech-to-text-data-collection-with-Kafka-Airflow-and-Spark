@@ -72,8 +72,9 @@ A list of commonly used resources that we find helpful are listed in the acknowl
 
 ### Built With
 
-Resoures that used in this project are :
-* 
+Resoures that are used in this project are :
+* Boto3
+* python kafka
 * 
 
 
